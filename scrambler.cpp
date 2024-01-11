@@ -627,7 +627,9 @@ void print_node(std::ostream &out, const scrambler::node *n, annotation_mode kee
                     out << n->symbol;
                 } else {
                     assert(name_id < permuted_name_ids.size());
-                    out << make_name(permuted_name_ids[name_id]);
+                    // This modification will make the scrambler only do shuffling of the assertions (no renaming of variables)
+                    // out << make_name(permuted_name_ids[name_id]); 
+                    out << n->symbol;
                 }
             }
         }
