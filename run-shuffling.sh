@@ -1,16 +1,16 @@
 #!/bin/bash
 
-directory="benchmarks"
-for file in $(find $directory -name "*.smt2"); do
-    fullpath=$(realpath $file)
-    filename=$(basename $fullpath)
-    echo "Scrambling" $filename "..."
+BENCHMARK_DIRECTORY="test_benchmarks"
+OUTPUT_DIRECTORY="test_scrambled_benchmarks"
 
-    output="scrambled-benchmarks/""${filename::-5}_scram.smt2"
+for file in $(find $BENCHMARK_DIRECTORY -name "*.smt2"); do
+    filename=$(basename "$file")
+    echo "Scrambling $filename ..."
+
+    output="$OUTPUT_DIRECTORY/${filename::-5}_scram.smt2"
 
     ./scrambler -seed $1 < $file > $output
 
-    echo "Scrambled file saved to " $output
+    echo "Scrambled file saved to $output"
     echo "********************************************"
-    # ./scrambler $file > scrambled-benchmarks/"scram{$file}"
 done
