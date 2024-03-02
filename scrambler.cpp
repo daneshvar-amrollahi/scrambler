@@ -439,6 +439,7 @@ namespace scrambler {
 // if true, else -1.
 int is_commutative(const node *n)
 {
+    return -1;
     // *n might be a qualified identifier of the form ('as' identifier sort)
     const std::string *symbol = &(n->symbol);
     if (*symbol == "as") {
@@ -489,6 +490,7 @@ int is_commutative(const node *n)
 
 bool flip_antisymm(const node *n, node ** const out_n)
 {
+    return false;
     if (no_scramble) {
         return false;
     }
