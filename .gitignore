@@ -2,3 +2,7 @@ lexer.cpp
 lexer.h
 parser.cpp
 parser.h
+*.tar.gz
+*.o
+scrambler
+*.output
