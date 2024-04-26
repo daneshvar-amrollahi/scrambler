@@ -4,7 +4,10 @@
 (declare-const z Int)
 (declare-const w Int)
 (declare-const zz Int)
+(declare-const a (_ BitVec 4))
+(declare-const b (_ BitVec 4))
 
+(assert (not (= (bvuge a b) (bvugt a b))))
 (assert (> x 20))
 (assert (> y 21))
 (assert (> z 22))
