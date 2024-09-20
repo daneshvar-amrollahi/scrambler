@@ -489,6 +489,7 @@ int is_commutative(const node *n)
 
 bool flip_antisymm(const node *n, node ** const out_n)
 {
+    return false; // Disable flipping of antisymmetric operators
     if (no_scramble) {
         return false;
     }
@@ -626,8 +627,9 @@ void print_node(std::ostream &out, const scrambler::node *n, annotation_mode kee
                 if (name_id == 0) {
                     out << n->symbol;
                 } else {
-                    assert(name_id < permuted_name_ids.size());
-                    out << make_name(permuted_name_ids[name_id]);
+                    // assert(name_id < permuted_name_ids.size());
+                    // out << make_name(permuted_name_ids[name_id]);
+                    out << n->symbol; // Disables renaming
                 }
             }
         }
@@ -676,6 +678,10 @@ void print_command(std::ostream &out, const scrambler::node *n, annotation_mode 
 void print_scrambled(std::ostream &out, annotation_mode keep_annotations)
 {
     if (!no_scramble) {
+
+        /*
+        Disable shuffling of declarations and assertions
+
         // identify consecutive declarations and shuffle them
         for (size_t i = 0; i < commands.size(); ) {
             if (commands[i]->symbol == "declare-fun") {
@@ -736,6 +742,8 @@ void print_scrambled(std::ostream &out, annotation_mode keep_annotations)
                 std::swap(permuted_name_ids[i], permuted_name_ids[j]);
             }
         }
+
+        */
     }
 
     // print all commands
